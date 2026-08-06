@@ -3,7 +3,6 @@ import urllib.parse
 
 import boto3
 
-
 glue = boto3.client("glue")
 
 CRAWLER_NAME = os.environ.get(

@@ -1,0 +1,10 @@
+# Profile used only by CI (and optionally local dev) to build/test the
+# project against DuckDB + the seeded CSVs -- no Snowflake credentials
+# required. Point DBT_PROFILES_DIR here, or copy this file to ~/.dbt/.
+retail_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: 'dev.duckdb'
+      threads: 4

@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: One row per customer with lifetime order/revenue rollups. Grain -- customer_id.
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: One row per product with current stock position. Grain -- product_id.
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_orders
+    description: >
+      One row per order line, enriched with payment status and revenue
+      reconciliation. This is the primary fact table for the Power BI
+      revenue and order-status dashboards. Grain -- order_id.
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: has_revenue_mismatch
+        description: >
+          True when the source total_amount doesn't match quantity * unit_price.
+          Used to flag bad upstream data before it reaches the dashboard.
+
+  - name: fct_payments
+    description: One row per payment attempt. Grain -- payment_id.
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_inventory
+    description: One row per product/warehouse stock record. Grain -- inventory_id.
+    columns:
+      - name: inventory_id
+        tests:
+          - unique
+          - not_null

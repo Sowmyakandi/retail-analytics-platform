@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: >
+      Raw retail data. In production this points at the Snowflake schema
+      loaded by the Glue ETL job from S3 processed/. For local development
+      and CI, dbt seeds (retail_dbt/seeds/*.csv) load this same schema in
+      DuckDB so the project can be built and tested with no cloud
+      dependencies.
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
+      - name: payments
+      - name: inventory

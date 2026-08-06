@@ -1,12 +1,14 @@
 # 🛒 Event-Driven Retail Analytics Platform
 
-An end-to-end cloud-based Retail Analytics Platform built using AWS, Snowflake, dbt, Airflow, Python, SQL, and Power BI. This project demonstrates how raw retail data is ingested, transformed, modeled, and visualized to generate actionable business insights.
+[![CI](https://github.com/Sowmyakandi/retail-analytics-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/Sowmyakandi/retail-analytics-platform/actions/workflows/ci.yml)
+
+An end-to-end retail analytics pipeline built around AWS, Snowflake, dbt, and Airflow. It generates synthetic retail data, lands it in S3, transforms it through an event-driven Glue pipeline, and models it in dbt for reporting.
 
 ---
 
 # 📌 Project Overview
 
-This project simulates a production-grade retail analytics pipeline that automates data ingestion, transformation, warehousing, and reporting.
+This project simulates a production-grade retail analytics pipeline: data generation, event-driven ingestion, PySpark transformation, and dbt modeling, with Snowflake and Power BI as the intended production warehouse/BI layer.
 
 The pipeline processes retail data including:
 
@@ -16,7 +18,21 @@ The pipeline processes retail data including:
 - Payments
 - Inventory
 
-The transformed data is loaded into Snowflake, modeled using dbt, and visualized in Power BI.
+---
+
+# ✅ Status: What's implemented vs. planned
+
+| Component | Status |
+|---|---|
+| Synthetic data generator (`scripts/generate_retail_data.py`) | Implemented — generates 1,000 customers, 200 products, 10,000 orders, ~10,400 payments, ~400 inventory rows |
+| Lambda trigger (`lambda/lambda_function.py`) | Implemented — starts the Glue crawler on `raw/` uploads |
+| Glue ETL job (`glue_etl/retail_etl_job.py`) | Implemented — dedup, null handling, type casting, revenue reconciliation, enrichment join |
+| Airflow DAG (`airflow/retail_pipeline_dag.py`) | Implemented — orchestrates S3 sensor → crawler → Glue ETL |
+| dbt staging + mart models (`retail_dbt/`) | Implemented — 5 staging models, 5 marts, 30 schema tests. Runnable locally/in CI against DuckDB with no cloud credentials (see below), or against Snowflake in production |
+| CI (`.github/workflows/ci.yml`) | Implemented — lints Python, runs `dbt build` on every push/PR |
+| S3 → SNS → SQS → Lambda event wiring | **Not included** — this repo has the Lambda code, but the S3/SNS/SQS resources and IAM roles themselves are not provisioned here (no Terraform/CDK/CloudFormation yet) |
+| Snowflake warehouse | **Not included** — no schema DDL or loading scripts in this repo; the dbt project targets it via `retail_dbt/ci_profiles` (dev) or environment-configured Snowflake credentials (prod) |
+| Power BI dashboard | **Planned, not included** — no `.pbix` file or screenshots in this repo yet |
 
 ---
 
@@ -59,114 +75,104 @@ dbt Transformations
 Power BI Dashboard
 ```
 
+See `architecture/architecture.md` for the full Mermaid diagram.
+
 ---
 
 # 🚀 Technology Stack
 
 ### Cloud
-- AWS S3
-- AWS Lambda
-- AWS Glue
-- Amazon SNS
-- Amazon SQS
+- AWS S3, Lambda, Glue, SNS, SQS
 
 ### Data Warehouse
-- Snowflake
+- Snowflake (production) / DuckDB (local dev + CI, via dbt seeds)
 
 ### Transformation
-- dbt
-- PySpark
-- SQL
-
-### Programming
-- Python
+- dbt, PySpark, SQL
 
 ### Orchestration
 - Apache Airflow
 
 ### Visualization
-- Power BI
-
-### Version Control
-- Git
-- GitHub
+- Power BI (planned)
 
 ---
 
 # 📂 Repository Structure
 
 ```
-airflow/
-architecture/
-data/
-glue_etl/
-lambda/
-retail_dbt/
-scripts/
-powerbi/
-screenshots/
+airflow/          Airflow DAG orchestrating the pipeline
+architecture/      Architecture diagram (Mermaid)
+data/raw/          Synthetic CSVs produced by scripts/generate_retail_data.py
+glue_etl/          PySpark Glue ETL job
+lambda/            S3-triggered Lambda that starts the Glue crawler
+retail_dbt/        dbt project: staging models, marts, seeds, CI profile
+scripts/           Synthetic retail data generator
+.github/workflows/ CI: lint + dbt build/test
 ```
 
 ---
 
 # 🔄 Data Pipeline
 
-1. Generate retail datasets using Python.
-2. Upload raw CSV files to Amazon S3.
-3. S3 triggers SNS notification.
-4. SNS forwards messages to SQS.
-5. Lambda starts AWS Glue Crawler.
-6. Glue ETL cleans and transforms data.
-7. Processed data is loaded into Snowflake.
-8. dbt builds analytical models.
-9. Power BI connects to Snowflake for reporting.
+1. Generate retail datasets using Python (`scripts/generate_retail_data.py`).
+2. Upload raw CSV files to Amazon S3 under `raw/`.
+3. S3 triggers an SNS notification, forwarded via SQS.
+4. Lambda starts the Glue crawler.
+5. Glue ETL (PySpark) cleans, deduplicates, and enriches the data.
+6. Processed Parquet lands back in S3, then loads into Snowflake.
+7. dbt builds staging and mart models on top of it.
+8. Power BI (planned) connects to Snowflake for reporting.
 
 ---
 
-# 📊 Dashboard Metrics
+# 🧪 Getting Started (local dev)
 
-The Power BI dashboard includes:
+```bash
+# Python deps for the data generator / Lambda
+pip install -r requirements.txt
 
-- Total Revenue
-- Total Orders
-- Total Customers
-- Average Order Value
-- Monthly Revenue Trend
-- Order Status Distribution
-- Top Products by Revenue
-- Top Customers
-- Sales by State
+# Generate fresh synthetic data (optional -- data/raw/ already has sample data)
+python scripts/generate_retail_data.py
+
+# dbt: build and test everything against DuckDB, no cloud credentials needed
+cd retail_dbt
+pip install -r requirements.txt
+dbt seed --profiles-dir ./ci_profiles
+dbt run  --profiles-dir ./ci_profiles
+dbt test --profiles-dir ./ci_profiles
+```
+
+To target the real Snowflake warehouse instead, set the `SNOWFLAKE_*` environment variables (see `.env.example`) and run dbt with `--target prod` against the profile in `retail_dbt/../profiles.yml` (not checked in — configure locally or via CI secrets).
+
+Lint:
+
+```bash
+pip install ruff
+ruff check lambda/ glue_etl/ airflow/ scripts/
+```
 
 ---
 
-# 📈 Business Insights
+# 🗃️ dbt Models
 
-The platform enables business users to:
+**Staging** (`retail_dbt/models/staging/`): `stg_customers`, `stg_products`, `stg_orders`, `stg_payments`, `stg_inventory` — 1:1 cleaned views over the raw sources, with type casting and a `revenue_difference` / `has_revenue_mismatch` check on orders.
 
-- Track sales performance
-- Monitor customer purchasing behavior
-- Identify top-selling products
-- Analyze monthly revenue trends
-- Measure order fulfillment status
-- Support executive decision-making
+**Marts** (`retail_dbt/models/marts/`): `dim_customers` (with lifetime order/revenue rollups), `dim_products` (with stock position), `fct_orders` (enriched with payment status), `fct_payments`, `fct_inventory`.
+
+30 schema tests (`unique`, `not_null`, `relationships`, `accepted_values`) run on every CI build.
 
 ---
 
-# 🛠️ Tools & Technologies
+# 🔐 Configuration
 
-- Python
-- SQL
-- AWS S3
-- AWS Lambda
-- AWS Glue
-- AWS SNS
-- AWS SQS
-- Snowflake
-- dbt
-- Apache Airflow
-- Power BI
-- Git
-- GitHub
+No AWS account IDs or bucket names are hardcoded in source. The Glue job reads its output path from a `--OUTPUT_S3_PATH` job parameter, and the Airflow DAG reads the bucket name from an Airflow Variable (`retail_analytics_bucket_name`) or the `RETAIL_ANALYTICS_BUCKET_NAME` environment variable. See `.env.example` for the full list of configuration values.
+
+---
+
+# 📊 Planned Dashboard Metrics
+
+Once the Power BI layer is built, it's intended to surface: total revenue, total orders, total customers, average order value, monthly revenue trend, order status distribution, top products by revenue, top customers, and sales by state — all of which are already computable from `fct_orders` / `dim_customers` / `dim_products`.
 
 ---
 

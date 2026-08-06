@@ -1,0 +1,7 @@
+line-length = 100
+target-version = "py311"
+
+[lint]
+# Keep this focused on real bugs (pyflakes/pycodestyle) and import hygiene
+# rather than pulling in every opinionated ruff rule set by default.
+select = ["E4", "E7", "E9", "F", "I"]

@@ -1,0 +1,12 @@
+# Data generation (scripts/generate_retail_data.py)
+pandas==2.2.2
+Faker==26.0.0
+
+# Lambda / local AWS scripting (lambda/lambda_function.py, boto3 calls)
+boto3==1.34.144
+
+# Airflow DAG authoring/linting (airflow/retail_pipeline_dag.py)
+# Not pinned here -- install via the official constraints file for your
+# Airflow version, e.g.:
+#   pip install "apache-airflow==2.9.*" apache-airflow-providers-amazon \
+#     --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.9.3/constraints-3.10.txt"

@@ -7,8 +7,10 @@ from pyspark.context import SparkContext
 from pyspark.sql import functions as F
 from pyspark.sql.types import DecimalType
 
-
-args = getResolvedOptions(sys.argv, ["JOB_NAME"])
+args = getResolvedOptions(
+    sys.argv,
+    ["JOB_NAME", "OUTPUT_S3_PATH"],
+)
 
 sc = SparkContext()
 glue_context = GlueContext(sc)
@@ -18,9 +20,10 @@ job = Job(glue_context)
 job.init(args["JOB_NAME"], args)
 
 DATABASE = "retail_analytics_db"
-OUTPUT_BASE = (
-    "s3://retail-analytics-platform-sowmya-247371364282-us-east-2-an/processed"
-)
+# Passed in as a --OUTPUT_S3_PATH job parameter (e.g. from Terraform/CDK or
+# the Glue console), e.g. "s3://<your-bucket>/processed". Keeping the bucket
+# name out of source avoids baking an AWS account ID into the repo.
+OUTPUT_BASE = args["OUTPUT_S3_PATH"].rstrip("/")
 
 
 def read_catalog_table(table_name: str):
