@@ -1,18 +1,9 @@
-Welcome to your new dbt project!
+# Retail Analytics dbt Project
 
-### Using the starter project
+Staging and mart models for the retail analytics platform. See the top-level
+`README.md` for the full pipeline; this project builds against Snowflake in
+production or DuckDB locally/in CI (`dbt seed/run/test --profiles-dir ./ci_profiles`).
 
-Try running the following commands:
-- dbt run
-- dbt test
-
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
 ## 📊 Power BI Dashboard
 
 The project includes an interactive Power BI dashboard that provides business insights from the transformed retail data.
@@ -30,4 +21,4 @@ The project includes an interactive Power BI dashboard that provides business in
 
 ### Dashboard Preview
 
-![Power BI Dashboard](screenshots/07_PowerBI_Dashboard.png)
+![Power BI Dashboard](../screenshots/07_PowerBI_Dashboard.png)

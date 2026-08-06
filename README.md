@@ -30,51 +30,13 @@ The pipeline processes retail data including:
 | Airflow DAG (`airflow/retail_pipeline_dag.py`) | Implemented — orchestrates S3 sensor → crawler → Glue ETL |
 | dbt staging + mart models (`retail_dbt/`) | Implemented — 5 staging models, 5 marts, 30 schema tests. Runnable locally/in CI against DuckDB with no cloud credentials (see below), or against Snowflake in production |
 | CI (`.github/workflows/ci.yml`) | Implemented — lints Python, runs `dbt build` on every push/PR |
-| S3 → SNS → SQS → Lambda event wiring | Implemented — S3 upload events publish to SNS, SNS delivers messages to SQS, Lambda is triggered from SQS, and automatically starts the AWS Glue Crawler for new raw uploads.
+| S3 → Lambda event wiring | Implemented — S3 upload events under `raw/` trigger the Lambda directly, which starts the AWS Glue Crawler for new raw uploads.
 | Snowflake warehouse | Implemented — Snowflake warehouse configured with RETAIL_ANALYTICS database, RAW and MART schemas, dimensional models (DIM_CUSTOMERS, DIM_PRODUCTS, FACT_ORDERS), and analytical SQL queries for reporting.
 | Power BI dashboard | Implemented — interactive Power BI dashboard (`powerbi/Retail_Analytics_Dashboard.pbix`) included along with screenshots in the `/screenshots` folder. Dashboard includes KPI cards, monthly revenue trends, top customers, top products, order status distribution, and geographic sales analysis. |
 
 ---
 
-# 🏗️ Architecture
-
-```
-CSV Files
-     │
-     ▼
-Amazon S3 (Raw Layer)
-     │
-     ▼
-S3 Event Notification
-     │
-     ▼
-SNS Topic
-     │
-     ▼
-SQS Queue
-     │
-     ▼
-AWS Lambda
-     │
-     ▼
-AWS Glue Crawler
-     │
-     ▼
-AWS Glue ETL (PySpark)
-     │
-     ▼
-Amazon S3 (Processed)
-     │
-     ▼
-Snowflake Data Warehouse
-     │
-     ▼
-dbt Transformations
-     │
-     ▼
-Power BI Dashboard
-```
-
+# 🏗️ Architecture 
 See `architecture/architecture.md` for the full Mermaid diagram.
 
 ---
@@ -82,7 +44,7 @@ See `architecture/architecture.md` for the full Mermaid diagram.
 # 🚀 Technology Stack
 
 ### Cloud
-- AWS S3, Lambda, Glue, SNS, SQS
+- AWS S3, Lambda, Glue
 
 ### Data Warehouse
 - Snowflake (production) / DuckDB (local dev + CI, via dbt seeds)
@@ -94,35 +56,23 @@ See `architecture/architecture.md` for the full Mermaid diagram.
 - Apache Airflow
 
 ### Visualization
-- Power BI (planned)
+- Power BI
 
 ---
 
-# 📂 Repository Structure
-
-```
-airflow/          Airflow DAG orchestrating the pipeline
-architecture/      Architecture diagram (Mermaid)
-data/raw/          Synthetic CSVs produced by scripts/generate_retail_data.py
-glue_etl/          PySpark Glue ETL job
-lambda/            S3-triggered Lambda that starts the Glue crawler
-retail_dbt/        dbt project: staging models, marts, seeds, CI profile
-scripts/           Synthetic retail data generator
-.github/workflows/ CI: lint + dbt build/test
-```
-
+# 📂 Repository Structure 
 ---
 
 # 🔄 Data Pipeline
 
 1. Generate retail datasets using Python (`scripts/generate_retail_data.py`).
 2. Upload raw CSV files to Amazon S3 under `raw/`.
-3. S3 triggers an SNS notification, forwarded via SQS.
+3. S3 triggers an ObjectCreated event that invokes the Lambda directly.
 4. Lambda starts the Glue crawler.
 5. Glue ETL (PySpark) cleans, deduplicates, and enriches the data.
 6. Processed Parquet lands back in S3, then loads into Snowflake.
 7. dbt builds staging and mart models on top of it.
-8. Power BI (planned) connects to Snowflake for reporting.
+8. Power BI connects to Snowflake for reporting.
 
 ---
 
@@ -170,9 +120,9 @@ No AWS account IDs or bucket names are hardcoded in source. The Glue job reads i
 
 ---
 
-# 📊 Planned Dashboard Metrics
+# 📊 Dashboard Metrics
 
-Once the Power BI layer is built, it's intended to surface: total revenue, total orders, total customers, average order value, monthly revenue trend, order status distribution, top products by revenue, top customers, and sales by state — all of which are already computable from `fct_orders` / `dim_customers` / `dim_products`.
+The Power BI dashboard surfaces: total revenue, total orders, total customers, average order value, monthly revenue trend, order status distribution, top products by revenue, top customers, and sales by state — computed from `fct_orders` / `dim_customers` / `dim_products`.
 
 ---
 
