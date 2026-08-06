@@ -128,4 +128,4 @@ The Power BI dashboard surfaces: total revenue, total orders, total customers, a
 
 # 👩‍💻 Author
 
-**Sowmya Kandi**
+**Sowmya Kandi**.
