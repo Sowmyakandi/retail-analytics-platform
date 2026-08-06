@@ -1,7 +1,7 @@
 # Retail Analytics Platform Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Python Data Generator] --> B[Raw CSV Files]
 
     B --> C[Amazon S3 Raw Layer]
@@ -30,7 +30,6 @@ flowchart LR
     P --> Q[dbt Staging Models]
     Q --> R[dbt Dimension Models]
     Q --> S[dbt Fact Models]
-
     R --> T[SQL Analytics]
     S --> T
 
