@@ -173,5 +173,3 @@ The platform enables business users to:
 # 👩‍💻 Author
 
 **Sowmya Kandi**
-
-Event-Driven Retail Analytics Platform using AWS, Snowflake, dbt, Airflow, and Power BI
