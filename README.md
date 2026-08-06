@@ -30,9 +30,9 @@ The pipeline processes retail data including:
 | Airflow DAG (`airflow/retail_pipeline_dag.py`) | Implemented — orchestrates S3 sensor → crawler → Glue ETL |
 | dbt staging + mart models (`retail_dbt/`) | Implemented — 5 staging models, 5 marts, 30 schema tests. Runnable locally/in CI against DuckDB with no cloud credentials (see below), or against Snowflake in production |
 | CI (`.github/workflows/ci.yml`) | Implemented — lints Python, runs `dbt build` on every push/PR |
-| S3 → SNS → SQS → Lambda event wiring | **Not included** — this repo has the Lambda code, but the S3/SNS/SQS resources and IAM roles themselves are not provisioned here (no Terraform/CDK/CloudFormation yet) |
-| Snowflake warehouse | **Not included** — no schema DDL or loading scripts in this repo; the dbt project targets it via `retail_dbt/ci_profiles` (dev) or environment-configured Snowflake credentials (prod) |
-| Power BI dashboard | **Implemented** — interactive Power BI dashboard (`powerbi/Retail_Analytics_Dashboard.pbix`) included along with screenshots in the `/screenshots` folder. Dashboard includes KPI cards, monthly revenue trends, top customers, top products, order status distribution, and geographic sales analysis. |
+| S3 → SNS → SQS → Lambda event wiring | Implemented — S3 upload events publish to SNS, SNS delivers messages to SQS, Lambda is triggered from SQS, and automatically starts the AWS Glue Crawler for new raw uploads.
+| Snowflake warehouse | Implemented — Snowflake warehouse configured with RETAIL_ANALYTICS database, RAW and MART schemas, dimensional models (DIM_CUSTOMERS, DIM_PRODUCTS, FACT_ORDERS), and analytical SQL queries for reporting.
+| Power BI dashboard | Implemented — interactive Power BI dashboard (`powerbi/Retail_Analytics_Dashboard.pbix`) included along with screenshots in the `/screenshots` folder. Dashboard includes KPI cards, monthly revenue trends, top customers, top products, order status distribution, and geographic sales analysis. |
 
 ---
 
