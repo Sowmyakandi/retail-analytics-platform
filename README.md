@@ -32,7 +32,7 @@ The pipeline processes retail data including:
 | CI (`.github/workflows/ci.yml`) | Implemented — lints Python, runs `dbt build` on every push/PR |
 | S3 → SNS → SQS → Lambda event wiring | **Not included** — this repo has the Lambda code, but the S3/SNS/SQS resources and IAM roles themselves are not provisioned here (no Terraform/CDK/CloudFormation yet) |
 | Snowflake warehouse | **Not included** — no schema DDL or loading scripts in this repo; the dbt project targets it via `retail_dbt/ci_profiles` (dev) or environment-configured Snowflake credentials (prod) |
-| Power BI dashboard | **Planned, not included** — no `.pbix` file or screenshots in this repo yet |
+| Power BI dashboard | **Implemented** — interactive Power BI dashboard (`powerbi/Retail_Analytics_Dashboard.pbix`) included along with screenshots in the `/screenshots` folder. Dashboard includes KPI cards, monthly revenue trends, top customers, top products, order status distribution, and geographic sales analysis. |
 
 ---
 
