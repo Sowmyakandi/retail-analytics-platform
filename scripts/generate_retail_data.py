@@ -1,6 +1,7 @@
-from pathlib import Path
-from datetime import date, timedelta
 import random
+import uuid
+from datetime import date, timedelta
+from pathlib import Path
 
 import pandas as pd
 from faker import Faker
@@ -467,12 +468,6 @@ print(payments_df["payment_status"].value_counts())
 print()
 print("Payment method distribution:")
 print(payments_df["payment_method"].value_counts())
-import random
-import uuid
-from datetime import timedelta
-
-import pandas as pd
-
 
 # ============================================================
 # PAYMENT DATA GENERATION

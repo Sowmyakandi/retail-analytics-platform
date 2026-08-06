@@ -1,0 +1,7 @@
+# Local development / CI: build and test the project with no cloud
+# dependencies using DuckDB against the seeded CSVs.
+dbt-core==1.7.13
+dbt-duckdb==1.7.4
+
+# Production: uncomment to develop against the real Snowflake warehouse.
+# dbt-snowflake==1.7.3

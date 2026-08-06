@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: One row per customer, cleaned and standardized.
+    columns:
+      - name: customer_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: Lower-cased customer email.
+
+  - name: stg_products
+    description: One row per product in the catalog.
+    columns:
+      - name: product_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: list_price
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: One row per order line, with a recalculated total for revenue reconciliation.
+    columns:
+      - name: order_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ["Delivered", "Shipped", "Processing", "Cancelled", "Returned"]
+              config:
+                severity: warn
+
+  - name: stg_payments
+    description: One row per payment attempt against an order.
+    columns:
+      - name: payment_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id
+
+  - name: stg_inventory
+    description: One row per product/warehouse stock record.
+    columns:
+      - name: inventory_id
+        description: Primary key.
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_products')
+              field: product_id
