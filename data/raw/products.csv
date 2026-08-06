@@ -1,201 +1,201 @@
 product_id,product_name,category,brand,price
-1,Mattel Max Building Set,Toys,Mattel,50.57
-2,Maybelline Smart Serum,Beauty,Maybelline,97.3
-3,Mattel Essential RC Car,Toys,Mattel,7.36
-4,Nike Premium Tennis Racket,Sports Equipment,Nike,263.55
-5,Wilson Max Yoga Mat,Sports Equipment,Wilson,225.2
-6,Under Armour Pro Tennis Racket,Sports Equipment,Under Armour,98.09
-7,Dove Max Serum,Beauty,Dove,37.5
-8,Nike Smart Running Shoes,Sports Equipment,Nike,126.03
-9,Zara Smart Dress,Clothing,Zara,94.81
-10,Fisher-Price Essential Doll,Toys,Fisher-Price,6.76
-11,Scholastic Deluxe Cookbook,Books,Scholastic,20.71
-12,Adidas Smart Jeans,Clothing,Adidas,182.65
-13,Maybelline Deluxe Lipstick,Beauty,Maybelline,67.98
-14,LG Classic Smartphone,Electronics,LG,1392.16
-15,Spalding Essential Basketball,Sports Equipment,Spalding,213.82
-16,Nerf Ultra Board Game,Toys,Nerf,48.77
-17,Hasbro Max Action Figure,Toys,Hasbro,22.46
-18,Nivea Smart Shampoo,Beauty,Nivea,12.0
-19,Instant Pot Pro Vacuum,Home & Kitchen,Instant Pot,205.94
-20,IKEA Classic Cookware Set,Home & Kitchen,IKEA,57.57
-21,Hasbro Deluxe Building Set,Toys,Hasbro,21.74
-22,Gap Mini Sneakers,Clothing,Gap,192.65
-23,Fisher-Price Premium Building Set,Toys,Fisher-Price,90.2
-24,Fisher-Price Max Action Figure,Toys,Fisher-Price,51.42
-25,Fisher-Price Essential RC Car,Toys,Fisher-Price,71.4
-26,Nestle Smart Coffee,Grocery,Nestle,32.0
-27,Scholastic Pro Guidebook,Books,Scholastic,33.99
-28,Puma Max Hoodie,Clothing,Puma,18.59
-29,Maybelline Deluxe Lipstick,Beauty,Maybelline,8.63
-30,Nerf Pro Board Game,Toys,Nerf,58.18
-31,Nestle Smart Coffee,Grocery,Nestle,29.73
-32,Nivea Essential Serum,Beauty,Nivea,112.27
-33,Dove Essential Lipstick,Beauty,Dove,32.17
-34,KitchenAid Pro Blender,Home & Kitchen,KitchenAid,264.74
-35,KitchenAid Plus Cookware Set,Home & Kitchen,KitchenAid,486.1
-36,General Mills Premium Pasta Sauce,Grocery,General Mills,24.13
-37,Levi's Pro Jacket,Clothing,Levi's,27.38
-38,Zara Premium Sneakers,Clothing,Zara,115.17
-39,Wilson Max Running Shoes,Sports Equipment,Wilson,256.4
-40,Penguin Plus Novel,Books,Penguin,13.32
-41,Dell Classic Monitor,Electronics,Dell,1133.32
-42,KitchenAid Deluxe Air Fryer,Home & Kitchen,KitchenAid,289.31
-43,Samsung Smart Headphones,Electronics,Samsung,377.86
-44,Adidas Essential Dumbbell Set,Sports Equipment,Adidas,180.6
-45,Fisher-Price Plus RC Car,Toys,Fisher-Price,25.64
-46,Nike Smart Tennis Racket,Sports Equipment,Nike,39.3
-47,Adidas Smart Sneakers,Clothing,Adidas,72.54
-48,LEGO Pro RC Car,Toys,LEGO,82.31
-49,Nike Smart Dumbbell Set,Sports Equipment,Nike,53.93
-50,Under Armour Mini Basketball,Sports Equipment,Under Armour,107.82
-51,Nerf Pro Building Set,Toys,Nerf,20.77
-52,Gap Plus Jeans,Clothing,Gap,95.66
-53,Simon & Schuster Ultra Cookbook,Books,Simon & Schuster,53.04
-54,L'Oreal Ultra Serum,Beauty,L'Oreal,66.84
-55,Cuisinart Deluxe Vacuum,Home & Kitchen,Cuisinart,136.93
-56,Bose Mini Tablet,Electronics,Bose,738.0
-57,Dell Classic Smartphone,Electronics,Dell,1165.65
-58,Nivea Classic Shampoo,Beauty,Nivea,133.46
-59,HarperCollins Classic Biography,Books,HarperCollins,5.75
-60,Adidas Deluxe Yoga Mat,Sports Equipment,Adidas,242.61
-61,Puma Classic Shorts,Clothing,Puma,83.9
-62,IKEA Classic Vacuum,Home & Kitchen,IKEA,331.56
-63,Lenovo Ultra Smartphone,Electronics,Lenovo,155.85
-64,Apple Plus Speaker,Electronics,Apple,701.02
-65,Penguin Deluxe Guidebook,Books,Penguin,7.18
-66,Neutrogena Premium Lipstick,Beauty,Neutrogena,100.8
-67,Puma Essential Jeans,Clothing,Puma,109.42
-68,Adidas Smart Sneakers,Clothing,Adidas,115.79
-69,L'Oreal Ultra Serum,Beauty,L'Oreal,96.69
-70,Kraft Deluxe Pasta Sauce,Grocery,Kraft,29.73
-71,Nike Plus Dumbbell Set,Sports Equipment,Nike,117.87
-72,Levi's Classic Hoodie,Clothing,Levi's,171.7
-73,Hasbro Essential RC Car,Toys,Hasbro,82.71
-74,Instant Pot Max Blender,Home & Kitchen,Instant Pot,417.08
-75,Dyson Pro Vacuum,Home & Kitchen,Dyson,408.35
-76,Apple Essential Smartphone,Electronics,Apple,1853.62
-77,HarperCollins Pro Guidebook,Books,HarperCollins,40.52
-78,General Mills Essential Juice,Grocery,General Mills,27.87
-79,Dove Max Serum,Beauty,Dove,35.4
-80,Spalding Essential Basketball,Sports Equipment,Spalding,206.74
-81,IKEA Pro Air Fryer,Home & Kitchen,IKEA,221.79
-82,IKEA Classic Air Fryer,Home & Kitchen,IKEA,102.58
-83,Cuisinart Mini Coffee Maker,Home & Kitchen,Cuisinart,129.45
-84,Under Armour Essential Yoga Mat,Sports Equipment,Under Armour,121.98
-85,Sony Classic Monitor,Electronics,Sony,669.8
-86,L'Oreal Plus Lipstick,Beauty,L'Oreal,86.29
-87,Scholastic Premium Biography,Books,Scholastic,19.31
-88,Nike Mini Tennis Racket,Sports Equipment,Nike,189.99
-89,Under Armour Deluxe Dumbbell Set,Sports Equipment,Under Armour,101.92
-90,Dell Premium Monitor,Electronics,Dell,780.14
-91,Kraft Smart Coffee,Grocery,Kraft,16.92
-92,HarperCollins Deluxe Biography,Books,HarperCollins,31.83
-93,Dell Essential Smartwatch,Electronics,Dell,1518.29
-94,IKEA Max Cookware Set,Home & Kitchen,IKEA,73.18
-95,LEGO Essential Doll,Toys,LEGO,90.16
-96,Instant Pot Classic Vacuum,Home & Kitchen,Instant Pot,51.29
-97,LEGO Deluxe Puzzle,Toys,LEGO,28.08
-98,Dyson Max Blender,Home & Kitchen,Dyson,171.77
-99,Kellogg's Ultra Juice,Grocery,Kellogg's,23.4
-100,Instant Pot Plus Cookware Set,Home & Kitchen,Instant Pot,272.84
-101,Spalding Mini Dumbbell Set,Sports Equipment,Spalding,23.21
-102,Wilson Classic Tennis Racket,Sports Equipment,Wilson,16.02
-103,KitchenAid Ultra Coffee Maker,Home & Kitchen,KitchenAid,324.51
-104,LEGO Ultra Building Set,Toys,LEGO,43.38
-105,Adidas Mini Yoga Mat,Sports Equipment,Adidas,31.98
-106,Lenovo Premium Speaker,Electronics,Lenovo,1067.66
-107,Fisher-Price Plus Board Game,Toys,Fisher-Price,56.79
-108,Nerf Smart RC Car,Toys,Nerf,92.71
-109,Instant Pot Max Blender,Home & Kitchen,Instant Pot,321.21
-110,Nivea Deluxe Lipstick,Beauty,Nivea,149.46
-111,Under Armour Plus Dumbbell Set,Sports Equipment,Under Armour,292.45
-112,Mattel Deluxe Doll,Toys,Mattel,72.13
-113,H&M Smart Jeans,Clothing,H&M,158.59
-114,Penguin Deluxe Guidebook,Books,Penguin,22.89
-115,Spalding Mini Tennis Racket,Sports Equipment,Spalding,115.19
-116,Sony Max Tablet,Electronics,Sony,146.15
-117,Nivea Smart Lipstick,Beauty,Nivea,23.92
-118,KitchenAid Ultra Vacuum,Home & Kitchen,KitchenAid,280.69
-119,Adidas Pro Dumbbell Set,Sports Equipment,Adidas,299.58
-120,Kraft Pro Cereal,Grocery,Kraft,47.8
-121,H&M Plus Jeans,Clothing,H&M,114.49
-122,Gap Smart T-Shirt,Clothing,Gap,20.47
-123,Cuisinart Max Blender,Home & Kitchen,Cuisinart,120.25
-124,IKEA Deluxe Blender,Home & Kitchen,IKEA,253.0
-125,Gap Max Shorts,Clothing,Gap,192.15
-126,Spalding Mini Running Shoes,Sports Equipment,Spalding,24.66
-127,Zara Ultra Sneakers,Clothing,Zara,117.98
-128,Nivea Plus Serum,Beauty,Nivea,89.87
-129,Levi's Classic Jeans,Clothing,Levi's,156.82
-130,HP Essential Tablet,Electronics,HP,825.68
-131,HarperCollins Pro Guidebook,Books,HarperCollins,28.16
-132,Neutrogena Smart Lipstick,Beauty,Neutrogena,21.5
-133,H&M Ultra Shorts,Clothing,H&M,57.39
-134,Levi's Max T-Shirt,Clothing,Levi's,61.51
-135,Dove Deluxe Serum,Beauty,Dove,17.94
-136,Penguin Plus Journal,Books,Penguin,52.07
-137,Spalding Pro Tennis Racket,Sports Equipment,Spalding,109.87
-138,Nivea Plus Serum,Beauty,Nivea,20.13
-139,Dove Mini Shampoo,Beauty,Dove,48.17
-140,Mattel Plus Doll,Toys,Mattel,93.97
-141,IKEA Mini Air Fryer,Home & Kitchen,IKEA,371.58
-142,KitchenAid Premium Coffee Maker,Home & Kitchen,KitchenAid,469.45
-143,H&M Essential Jeans,Clothing,H&M,50.45
-144,Heinz Max Cereal,Grocery,Heinz,48.66
-145,Dyson Classic Blender,Home & Kitchen,Dyson,238.69
-146,Neutrogena Smart Face Cream,Beauty,Neutrogena,6.95
-147,Instant Pot Classic Cookware Set,Home & Kitchen,Instant Pot,202.08
-148,Spalding Essential Yoga Mat,Sports Equipment,Spalding,293.38
-149,Zara Ultra Jacket,Clothing,Zara,86.32
-150,Instant Pot Ultra Toaster,Home & Kitchen,Instant Pot,415.89
-151,HP Pro Headphones,Electronics,HP,1843.3
-152,Fisher-Price Classic Doll,Toys,Fisher-Price,69.34
-153,Dove Smart Lipstick,Beauty,Dove,82.41
-154,Dyson Plus Cookware Set,Home & Kitchen,Dyson,341.24
-155,Nike Max Sneakers,Clothing,Nike,61.98
-156,Adidas Mini Sneakers,Clothing,Adidas,136.11
-157,LEGO Max Building Set,Toys,LEGO,21.39
-158,Sony Max Smartwatch,Electronics,Sony,1511.23
-159,Zara Plus Jeans,Clothing,Zara,144.57
-160,Nivea Classic Serum,Beauty,Nivea,30.6
-161,Adidas Essential Tennis Racket,Sports Equipment,Adidas,295.59
-162,Fisher-Price Pro RC Car,Toys,Fisher-Price,99.85
-163,Nerf Max Building Set,Toys,Nerf,91.43
-164,Gap Pro Sneakers,Clothing,Gap,196.76
-165,H&M Classic Shorts,Clothing,H&M,118.26
-166,General Mills Essential Cereal,Grocery,General Mills,12.95
-167,Puma Plus Hoodie,Clothing,Puma,133.62
-168,Wilson Deluxe Dumbbell Set,Sports Equipment,Wilson,214.69
-169,Levi's Mini Shorts,Clothing,Levi's,171.62
-170,LEGO Max Action Figure,Toys,LEGO,60.94
-171,Fisher-Price Smart Building Set,Toys,Fisher-Price,41.02
-172,Under Armour Pro Yoga Mat,Sports Equipment,Under Armour,107.92
-173,Scholastic Essential Journal,Books,Scholastic,31.1
-174,Kraft Max Coffee,Grocery,Kraft,39.88
-175,Fisher-Price Plus Action Figure,Toys,Fisher-Price,88.86
-176,Nike Pro Tennis Racket,Sports Equipment,Nike,39.64
-177,Under Armour Pro Basketball,Sports Equipment,Under Armour,135.85
-178,Instant Pot Deluxe Coffee Maker,Home & Kitchen,Instant Pot,96.1
-179,Maybelline Essential Face Cream,Beauty,Maybelline,76.57
-180,Scholastic Max Guidebook,Books,Scholastic,32.39
-181,Under Armour Pro Yoga Mat,Sports Equipment,Under Armour,187.56
-182,Simon & Schuster Max Novel,Books,Simon & Schuster,19.79
-183,Kraft Premium Coffee,Grocery,Kraft,5.03
-184,Under Armour Pro Tennis Racket,Sports Equipment,Under Armour,151.44
-185,HP Plus Speaker,Electronics,HP,1128.38
-186,HarperCollins Plus Journal,Books,HarperCollins,27.47
-187,Wilson Smart Running Shoes,Sports Equipment,Wilson,46.53
-188,Kellogg's Ultra Juice,Grocery,Kellogg's,35.05
-189,Bose Smart Tablet,Electronics,Bose,1293.61
-190,Bose Essential Monitor,Electronics,Bose,655.22
-191,Instant Pot Smart Vacuum,Home & Kitchen,Instant Pot,92.98
-192,Heinz Pro Pasta Sauce,Grocery,Heinz,5.42
-193,Dove Pro Face Cream,Beauty,Dove,99.73
-194,HP Mini Camera,Electronics,HP,384.6
-195,Kellogg's Mini Juice,Grocery,Kellogg's,2.19
-196,Spalding Pro Running Shoes,Sports Equipment,Spalding,211.17
-197,Dove Deluxe Shampoo,Beauty,Dove,41.22
-198,Dyson Mini Toaster,Home & Kitchen,Dyson,28.18
-199,Maybelline Mini Perfume,Beauty,Maybelline,91.79
-200,Fisher-Price Plus Board Game,Toys,Fisher-Price,35.55
+1,HarperCollins Premium Biography,Books,HarperCollins,21.77
+2,L'Oreal Plus Shampoo,Beauty,L'Oreal,134.26
+3,Zara Deluxe Sneakers,Clothing,Zara,34.78
+4,Scholastic Plus Journal,Books,Scholastic,40.83
+5,Heinz Plus Pasta Sauce,Grocery,Heinz,14.19
+6,Bose Premium Monitor,Electronics,Bose,1964.49
+7,L'Oreal Premium Perfume,Beauty,L'Oreal,43.74
+8,Hasbro Pro RC Car,Toys,Hasbro,80.04
+9,Under Armour Mini Running Shoes,Sports Equipment,Under Armour,160.49
+10,Levi's Smart Sneakers,Clothing,Levi's,107.87
+11,Simon & Schuster Classic Biography,Books,Simon & Schuster,50.75
+12,HP Plus Laptop,Electronics,HP,899.79
+13,Simon & Schuster Essential Novel,Books,Simon & Schuster,56.57
+14,Fisher-Price Smart Puzzle,Toys,Fisher-Price,28.78
+15,Mattel Ultra Building Set,Toys,Mattel,22.83
+16,Nivea Mini Lipstick,Beauty,Nivea,53.79
+17,Apple Smart Tablet,Electronics,Apple,625.15
+18,Nivea Ultra Serum,Beauty,Nivea,143.63
+19,IKEA Plus Toaster,Home & Kitchen,IKEA,342.31
+20,Adidas Plus Jacket,Clothing,Adidas,34.83
+21,Nivea Essential Shampoo,Beauty,Nivea,65.8
+22,Dyson Plus Air Fryer,Home & Kitchen,Dyson,413.03
+23,Scholastic Max Cookbook,Books,Scholastic,16.35
+24,Nike Ultra Running Shoes,Sports Equipment,Nike,180.09
+25,IKEA Ultra Air Fryer,Home & Kitchen,IKEA,212.04
+26,Mattel Essential Action Figure,Toys,Mattel,15.15
+27,Kraft Classic Juice,Grocery,Kraft,27.66
+28,Puma Pro Dress,Clothing,Puma,84.71
+29,Instant Pot Mini Cookware Set,Home & Kitchen,Instant Pot,264.9
+30,Spalding Premium Yoga Mat,Sports Equipment,Spalding,17.83
+31,Levi's Ultra T-Shirt,Clothing,Levi's,50.16
+32,Nerf Essential Doll,Toys,Nerf,87.66
+33,Apple Pro Smartphone,Electronics,Apple,1077.68
+34,HarperCollins Premium Cookbook,Books,HarperCollins,24.01
+35,Zara Smart T-Shirt,Clothing,Zara,179.74
+36,Nike Deluxe Dress,Clothing,Nike,193.51
+37,Neutrogena Deluxe Serum,Beauty,Neutrogena,110.69
+38,Kraft Classic Cereal,Grocery,Kraft,31.32
+39,General Mills Essential Snack Bar,Grocery,General Mills,35.25
+40,Dyson Max Coffee Maker,Home & Kitchen,Dyson,414.22
+41,Instant Pot Premium Cookware Set,Home & Kitchen,Instant Pot,238.94
+42,Dyson Premium Air Fryer,Home & Kitchen,Dyson,146.77
+43,Adidas Pro Basketball,Sports Equipment,Adidas,102.37
+44,Samsung Premium Laptop,Electronics,Samsung,423.84
+45,Maybelline Max Shampoo,Beauty,Maybelline,57.4
+46,H&M Pro Hoodie,Clothing,H&M,35.34
+47,Under Armour Premium Basketball,Sports Equipment,Under Armour,188.28
+48,Nestle Deluxe Snack Bar,Grocery,Nestle,46.46
+49,Gap Smart Hoodie,Clothing,Gap,98.4
+50,Kellogg's Pro Juice,Grocery,Kellogg's,23.62
+51,Hasbro Classic RC Car,Toys,Hasbro,45.28
+52,Hasbro Pro Action Figure,Toys,Hasbro,27.18
+53,IKEA Pro Vacuum,Home & Kitchen,IKEA,75.3
+54,Kraft Ultra Snack Bar,Grocery,Kraft,7.54
+55,Instant Pot Smart Cookware Set,Home & Kitchen,Instant Pot,29.42
+56,Adidas Pro Basketball,Sports Equipment,Adidas,208.97
+57,Dove Premium Face Cream,Beauty,Dove,115.26
+58,Samsung Smart Speaker,Electronics,Samsung,1142.69
+59,Dyson Smart Blender,Home & Kitchen,Dyson,462.07
+60,Dyson Max Vacuum,Home & Kitchen,Dyson,493.39
+61,Kellogg's Plus Juice,Grocery,Kellogg's,24.62
+62,Mattel Ultra RC Car,Toys,Mattel,99.97
+63,Dell Deluxe Smartphone,Electronics,Dell,1487.23
+64,Mattel Classic Building Set,Toys,Mattel,32.06
+65,IKEA Mini Air Fryer,Home & Kitchen,IKEA,337.28
+66,Spalding Premium Running Shoes,Sports Equipment,Spalding,235.08
+67,Kellogg's Ultra Pasta Sauce,Grocery,Kellogg's,22.32
+68,Under Armour Smart Basketball,Sports Equipment,Under Armour,113.46
+69,Fisher-Price Classic Board Game,Toys,Fisher-Price,12.9
+70,Simon & Schuster Essential Novel,Books,Simon & Schuster,29.96
+71,Dyson Essential Cookware Set,Home & Kitchen,Dyson,311.35
+72,Kraft Classic Cereal,Grocery,Kraft,9.09
+73,Lenovo Premium Laptop,Electronics,Lenovo,456.73
+74,HP Pro Camera,Electronics,HP,301.83
+75,Wilson Essential Basketball,Sports Equipment,Wilson,51.24
+76,Nivea Classic Lipstick,Beauty,Nivea,143.96
+77,Hasbro Pro Board Game,Toys,Hasbro,5.4
+78,Heinz Premium Cereal,Grocery,Heinz,5.17
+79,Cuisinart Plus Vacuum,Home & Kitchen,Cuisinart,383.68
+80,Kraft Plus Coffee,Grocery,Kraft,31.23
+81,Scholastic Premium Novel,Books,Scholastic,51.28
+82,General Mills Mini Pasta Sauce,Grocery,General Mills,29.07
+83,Kellogg's Smart Juice,Grocery,Kellogg's,9.9
+84,Levi's Essential Jeans,Clothing,Levi's,148.96
+85,IKEA Max Coffee Maker,Home & Kitchen,IKEA,490.6
+86,LG Classic Speaker,Electronics,LG,1337.83
+87,Nivea Pro Face Cream,Beauty,Nivea,29.52
+88,HP Pro Laptop,Electronics,HP,548.48
+89,Lenovo Plus Headphones,Electronics,Lenovo,695.64
+90,Puma Plus Jeans,Clothing,Puma,170.31
+91,Adidas Classic Running Shoes,Sports Equipment,Adidas,222.92
+92,Nivea Plus Lipstick,Beauty,Nivea,11.68
+93,Dove Mini Serum,Beauty,Dove,130.28
+94,Neutrogena Max Face Cream,Beauty,Neutrogena,41.9
+95,Kraft Pro Pasta Sauce,Grocery,Kraft,2.3
+96,IKEA Pro Cookware Set,Home & Kitchen,IKEA,286.65
+97,Mattel Deluxe RC Car,Toys,Mattel,43.15
+98,Dove Classic Shampoo,Beauty,Dove,46.15
+99,Maybelline Mini Shampoo,Beauty,Maybelline,135.17
+100,LEGO Premium Board Game,Toys,LEGO,48.33
+101,Bose Ultra Headphones,Electronics,Bose,450.0
+102,Nerf Mini Doll,Toys,Nerf,16.48
+103,General Mills Ultra Juice,Grocery,General Mills,42.88
+104,Dell Ultra Speaker,Electronics,Dell,1515.73
+105,Puma Ultra Sneakers,Clothing,Puma,136.66
+106,Fisher-Price Plus RC Car,Toys,Fisher-Price,26.57
+107,Zara Max T-Shirt,Clothing,Zara,56.54
+108,IKEA Plus Coffee Maker,Home & Kitchen,IKEA,52.63
+109,Spalding Smart Yoga Mat,Sports Equipment,Spalding,115.28
+110,HarperCollins Essential Cookbook,Books,HarperCollins,26.8
+111,Puma Pro Jeans,Clothing,Puma,93.95
+112,Wilson Smart Basketball,Sports Equipment,Wilson,53.86
+113,Simon & Schuster Deluxe Biography,Books,Simon & Schuster,22.71
+114,Nerf Essential RC Car,Toys,Nerf,74.03
+115,Nerf Mini RC Car,Toys,Nerf,98.26
+116,Zara Deluxe Dress,Clothing,Zara,154.63
+117,Under Armour Pro Yoga Mat,Sports Equipment,Under Armour,110.18
+118,Spalding Ultra Basketball,Sports Equipment,Spalding,103.99
+119,General Mills Smart Snack Bar,Grocery,General Mills,27.5
+120,Sony Plus Monitor,Electronics,Sony,1304.73
+121,General Mills Pro Cereal,Grocery,General Mills,6.52
+122,HarperCollins Deluxe Guidebook,Books,HarperCollins,30.44
+123,Wilson Classic Basketball,Sports Equipment,Wilson,271.01
+124,Wilson Pro Basketball,Sports Equipment,Wilson,108.4
+125,Mattel Max Doll,Toys,Mattel,24.59
+126,Kraft Max Snack Bar,Grocery,Kraft,14.23
+127,Wilson Smart Running Shoes,Sports Equipment,Wilson,150.5
+128,Scholastic Pro Journal,Books,Scholastic,15.74
+129,Levi's Plus Jeans,Clothing,Levi's,165.48
+130,Wilson Ultra Running Shoes,Sports Equipment,Wilson,87.12
+131,Apple Plus Speaker,Electronics,Apple,917.21
+132,HP Premium Laptop,Electronics,HP,895.45
+133,Penguin Classic Cookbook,Books,Penguin,46.43
+134,Scholastic Classic Journal,Books,Scholastic,53.71
+135,Nike Deluxe Basketball,Sports Equipment,Nike,144.51
+136,Fisher-Price Max Action Figure,Toys,Fisher-Price,81.75
+137,IKEA Pro Toaster,Home & Kitchen,IKEA,484.65
+138,Nike Essential Shorts,Clothing,Nike,160.33
+139,IKEA Plus Cookware Set,Home & Kitchen,IKEA,74.52
+140,Bose Max Laptop,Electronics,Bose,1253.62
+141,HarperCollins Max Biography,Books,HarperCollins,55.53
+142,IKEA Pro Coffee Maker,Home & Kitchen,IKEA,241.68
+143,Zara Essential Shorts,Clothing,Zara,148.64
+144,Nestle Mini Juice,Grocery,Nestle,37.02
+145,Mattel Premium Puzzle,Toys,Mattel,88.28
+146,Adidas Ultra Jacket,Clothing,Adidas,157.34
+147,Bose Plus Speaker,Electronics,Bose,487.95
+148,LG Mini Camera,Electronics,LG,639.02
+149,Wilson Plus Dumbbell Set,Sports Equipment,Wilson,274.44
+150,Nike Classic Dumbbell Set,Sports Equipment,Nike,167.9
+151,Wilson Classic Basketball,Sports Equipment,Wilson,192.55
+152,Dove Essential Perfume,Beauty,Dove,105.39
+153,Nerf Deluxe Board Game,Toys,Nerf,98.25
+154,Dove Smart Shampoo,Beauty,Dove,42.12
+155,Fisher-Price Pro Board Game,Toys,Fisher-Price,97.2
+156,L'Oreal Smart Perfume,Beauty,L'Oreal,76.9
+157,HarperCollins Pro Novel,Books,HarperCollins,8.59
+158,Zara Classic Shorts,Clothing,Zara,34.1
+159,Penguin Smart Novel,Books,Penguin,28.19
+160,Kellogg's Max Coffee,Grocery,Kellogg's,37.99
+161,Heinz Deluxe Pasta Sauce,Grocery,Heinz,33.62
+162,L'Oreal Max Serum,Beauty,L'Oreal,115.69
+163,Zara Ultra Hoodie,Clothing,Zara,113.36
+164,Simon & Schuster Plus Novel,Books,Simon & Schuster,46.38
+165,Fisher-Price Deluxe Doll,Toys,Fisher-Price,57.61
+166,KitchenAid Pro Toaster,Home & Kitchen,KitchenAid,80.7
+167,HP Plus Laptop,Electronics,HP,243.83
+168,Fisher-Price Plus Action Figure,Toys,Fisher-Price,16.61
+169,H&M Premium Jacket,Clothing,H&M,175.75
+170,Hasbro Deluxe Building Set,Toys,Hasbro,81.2
+171,Nivea Premium Serum,Beauty,Nivea,142.38
+172,Neutrogena Max Lipstick,Beauty,Neutrogena,84.77
+173,Nerf Max RC Car,Toys,Nerf,63.4
+174,Adidas Classic Yoga Mat,Sports Equipment,Adidas,194.56
+175,Fisher-Price Mini RC Car,Toys,Fisher-Price,58.63
+176,Spalding Max Yoga Mat,Sports Equipment,Spalding,98.52
+177,Apple Essential Monitor,Electronics,Apple,1488.3
+178,Under Armour Pro Running Shoes,Sports Equipment,Under Armour,11.5
+179,Dyson Deluxe Air Fryer,Home & Kitchen,Dyson,486.21
+180,Kellogg's Smart Cereal,Grocery,Kellogg's,5.05
+181,Adidas Classic Tennis Racket,Sports Equipment,Adidas,86.64
+182,Samsung Pro Monitor,Electronics,Samsung,675.46
+183,Adidas Pro Dumbbell Set,Sports Equipment,Adidas,258.69
+184,Nike Max Dumbbell Set,Sports Equipment,Nike,107.03
+185,Maybelline Deluxe Lipstick,Beauty,Maybelline,141.13
+186,IKEA Mini Vacuum,Home & Kitchen,IKEA,304.0
+187,Dove Essential Serum,Beauty,Dove,85.38
+188,KitchenAid Max Blender,Home & Kitchen,KitchenAid,102.39
+189,Simon & Schuster Ultra Biography,Books,Simon & Schuster,48.34
+190,LEGO Pro Doll,Toys,LEGO,11.07
+191,Neutrogena Plus Lipstick,Beauty,Neutrogena,126.39
+192,Kraft Essential Cereal,Grocery,Kraft,16.8
+193,Dove Essential Perfume,Beauty,Dove,69.03
+194,Penguin Smart Guidebook,Books,Penguin,39.19
+195,Neutrogena Max Face Cream,Beauty,Neutrogena,32.25
+196,Adidas Premium Sneakers,Clothing,Adidas,138.33
+197,Nerf Max RC Car,Toys,Nerf,42.46
+198,IKEA Mini Coffee Maker,Home & Kitchen,IKEA,473.82
+199,Adidas Essential Jeans,Clothing,Adidas,97.62
+200,H&M Classic Sneakers,Clothing,H&M,41.6

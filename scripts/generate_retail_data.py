@@ -467,3 +467,462 @@ print(payments_df["payment_status"].value_counts())
 print()
 print("Payment method distribution:")
 print(payments_df["payment_method"].value_counts())
+import random
+import uuid
+from datetime import timedelta
+
+import pandas as pd
+
+
+# ============================================================
+# PAYMENT DATA GENERATION
+# ============================================================
+
+payment_methods = [
+    "Credit Card",
+    "Debit Card",
+    "PayPal",
+    "Gift Card",
+    "Amazon Pay",
+]
+
+# Payment scenarios:
+# 90% -> one successful payment
+# 8%  -> failed attempt followed by a successful retry
+# 2%  -> split payment across two payment methods
+SINGLE_PAYMENT_PROB = 0.90
+RETRY_PROB = 0.08
+
+payments = []
+payment_id = 1
+
+
+for order in orders:
+    order_id = order["order_id"]
+    order_total = round(float(order["total_amount"]), 2)
+    order_status = order["order_status"]
+
+    # Convert order_date to a datetime value so timedelta works safely
+    order_date = pd.to_datetime(order["order_date"])
+
+    # Cancelled orders have no completed payment
+    if order_status == "Cancelled":
+        continue
+
+    scenario_roll = random.random()
+
+    # --------------------------------------------------------
+    # Scenario 1: Single successful payment
+    # --------------------------------------------------------
+    if scenario_roll < SINGLE_PAYMENT_PROB:
+        payment_method = random.choice(payment_methods)
+
+        payments.append({
+            "payment_id": payment_id,
+            "order_id": order_id,
+            "payment_date": order_date,
+            "payment_method": payment_method,
+            "payment_amount": order_total,
+            "payment_status": "Successful",
+            "transaction_reference": f"txn_{uuid.uuid4().hex}",
+            "payment_attempt": 1,
+            "parent_payment_id": None,
+        })
+
+        payment_id += 1
+
+    # --------------------------------------------------------
+    # Scenario 2: Failed payment followed by successful retry
+    # --------------------------------------------------------
+    elif scenario_roll < SINGLE_PAYMENT_PROB + RETRY_PROB:
+        payment_method = random.choice(payment_methods)
+
+        # First failed attempt
+        failed_payment_id = payment_id
+
+        payments.append({
+            "payment_id": failed_payment_id,
+            "order_id": order_id,
+            "payment_date": order_date,
+            "payment_method": payment_method,
+            "payment_amount": order_total,
+            "payment_status": "Failed",
+            "transaction_reference": f"txn_{uuid.uuid4().hex}",
+            "payment_attempt": 1,
+            "parent_payment_id": None,
+        })
+
+        payment_id += 1
+
+        # Successful retry within 0–2 days
+        retry_date = order_date + timedelta(
+            days=random.randint(0, 2)
+        )
+
+        payments.append({
+            "payment_id": payment_id,
+            "order_id": order_id,
+            "payment_date": retry_date,
+            "payment_method": payment_method,
+            "payment_amount": order_total,
+            "payment_status": "Successful",
+            "transaction_reference": f"txn_{uuid.uuid4().hex}",
+            "payment_attempt": 2,
+            "parent_payment_id": failed_payment_id,
+        })
+
+        payment_id += 1
+
+    # --------------------------------------------------------
+    # Scenario 3: Split payment across two payment methods
+    # --------------------------------------------------------
+    else:
+        split_fraction = random.uniform(0.20, 0.80)
+
+        first_amount = round(order_total * split_fraction, 2)
+        second_amount = round(order_total - first_amount, 2)
+
+        method_1, method_2 = random.sample(
+            payment_methods,
+            2
+        )
+
+        # First portion
+        payments.append({
+            "payment_id": payment_id,
+            "order_id": order_id,
+            "payment_date": order_date,
+            "payment_method": method_1,
+            "payment_amount": first_amount,
+            "payment_status": "Successful",
+            "transaction_reference": f"txn_{uuid.uuid4().hex}",
+            "payment_attempt": 1,
+            "parent_payment_id": None,
+        })
+
+        payment_id += 1
+
+        # Second portion
+        payments.append({
+            "payment_id": payment_id,
+            "order_id": order_id,
+            "payment_date": order_date,
+            "payment_method": method_2,
+            "payment_amount": second_amount,
+            "payment_status": "Successful",
+            "transaction_reference": f"txn_{uuid.uuid4().hex}",
+            "payment_attempt": 1,
+            "parent_payment_id": None,
+        })
+
+        payment_id += 1
+
+
+# ============================================================
+# CREATE PAYMENTS DATAFRAME
+# ============================================================
+
+payments_df = pd.DataFrame(payments)
+
+payments_df["payment_date"] = pd.to_datetime(
+    payments_df["payment_date"]
+).dt.strftime("%Y-%m-%d")
+
+
+# ============================================================
+# PAYMENT DATA VALIDATION
+# ============================================================
+
+# 1. Validate payment_id uniqueness
+assert payments_df["payment_id"].is_unique, (
+    "Validation failed: duplicate payment IDs found."
+)
+
+# 2. Validate transaction_reference uniqueness
+assert payments_df["transaction_reference"].is_unique, (
+    "Validation failed: duplicate transaction references found."
+)
+
+# 3. Validate required fields
+required_payment_columns = [
+    "payment_id",
+    "order_id",
+    "payment_date",
+    "payment_method",
+    "payment_amount",
+    "payment_status",
+    "transaction_reference",
+    "payment_attempt",
+]
+
+assert not payments_df[required_payment_columns].isnull().any().any(), (
+    "Validation failed: required payment fields contain null values."
+)
+
+# 4. Validate payment statuses
+valid_payment_statuses = {
+    "Successful",
+    "Failed",
+}
+
+invalid_status_rows = payments_df[
+    ~payments_df["payment_status"].isin(valid_payment_statuses)
+]
+
+assert invalid_status_rows.empty, (
+    "Validation failed: invalid payment statuses found."
+)
+
+# 5. Validate payment methods
+invalid_method_rows = payments_df[
+    ~payments_df["payment_method"].isin(payment_methods)
+]
+
+assert invalid_method_rows.empty, (
+    "Validation failed: invalid payment methods found."
+)
+
+# 6. Validate positive payment amounts
+invalid_amount_rows = payments_df[
+    payments_df["payment_amount"] <= 0
+]
+
+assert invalid_amount_rows.empty, (
+    "Validation failed: zero or negative payment amounts found."
+)
+
+# 7. Validate payment order references
+orders_df = pd.DataFrame(orders)
+
+valid_order_ids = set(orders_df["order_id"])
+
+invalid_order_references = payments_df[
+    ~payments_df["order_id"].isin(valid_order_ids)
+]
+
+assert invalid_order_references.empty, (
+    "Validation failed: payments contain invalid order IDs."
+)
+
+# 8. Validate cancelled orders have no payments
+cancelled_order_ids = set(
+    orders_df.loc[
+        orders_df["order_status"] == "Cancelled",
+        "order_id"
+    ]
+)
+
+cancelled_order_payments = payments_df[
+    payments_df["order_id"].isin(cancelled_order_ids)
+]
+
+assert cancelled_order_payments.empty, (
+    "Validation failed: cancelled orders contain payments."
+)
+
+# 9. Validate retry relationships
+retry_rows = payments_df[
+    payments_df["payment_attempt"] > 1
+]
+
+assert retry_rows["parent_payment_id"].notna().all(), (
+    "Validation failed: retry payments are missing parent_payment_id."
+)
+
+original_payment_ids = set(payments_df["payment_id"])
+
+invalid_parent_rows = retry_rows[
+    ~retry_rows["parent_payment_id"].isin(original_payment_ids)
+]
+
+assert invalid_parent_rows.empty, (
+    "Validation failed: invalid parent payment references found."
+)
+
+# 10. Reconcile successful payments with order totals
+non_cancelled_orders = orders_df[
+    orders_df["order_status"] != "Cancelled"
+].copy()
+
+non_cancelled_orders["total_amount"] = (
+    non_cancelled_orders["total_amount"]
+    .astype(float)
+    .round(2)
+)
+
+expected_order_totals = (
+    non_cancelled_orders
+    .set_index("order_id")["total_amount"]
+)
+
+successful_payment_totals = (
+    payments_df[
+        payments_df["payment_status"] == "Successful"
+    ]
+    .groupby("order_id")["payment_amount"]
+    .sum()
+    .round(2)
+)
+
+reconciliation_df = pd.concat(
+    [
+        expected_order_totals.rename("order_total"),
+        successful_payment_totals.rename(
+            "successful_payment_total"
+        ),
+    ],
+    axis=1,
+).fillna(0)
+
+reconciliation_df["difference"] = (
+    reconciliation_df["order_total"]
+    - reconciliation_df["successful_payment_total"]
+).abs()
+
+reconciliation_errors = reconciliation_df[
+    reconciliation_df["difference"] > 0.01
+]
+
+assert reconciliation_errors.empty, (
+    "Payment reconciliation failed.\n"
+    f"{reconciliation_errors.head(10)}"
+)
+
+
+# ============================================================
+# SAVE PAYMENTS CSV
+# ============================================================
+
+payments_output_path = RAW_DATA_PATH / "payments.csv"
+
+payments_df.to_csv(
+    payments_output_path,
+    index=False,
+)
+
+
+# ============================================================
+# SUMMARY
+# ============================================================
+
+successful_count = (
+    payments_df["payment_status"] == "Successful"
+).sum()
+
+failed_count = (
+    payments_df["payment_status"] == "Failed"
+).sum()
+
+retry_count = (
+    payments_df["payment_attempt"] == 2
+).sum()
+
+split_order_count = (
+    payments_df[
+        payments_df["payment_status"] == "Successful"
+    ]
+    .groupby("order_id")
+    .size()
+    .gt(1)
+    .sum()
+)
+
+print("\nPayment generation completed!")
+print(f"Total non-cancelled orders: {len(non_cancelled_orders)}")
+print(f"Total payment records: {len(payments_df)}")
+print(f"Successful payment records: {successful_count}")
+print(f"Failed payment records: {failed_count}")
+print(f"Successful retries: {retry_count}")
+print(f"Split-payment orders: {split_order_count}")
+print("All payment validations passed!")
+print(f"payments.csv saved to: {payments_output_path}")
+# ============================================================
+# INVENTORY DATA GENERATION
+# ============================================================
+
+warehouses = [
+    "Dallas",
+    "Chicago",
+    "Atlanta",
+    "Phoenix",
+]
+
+inventory = []
+inventory_id = 1
+
+for product in products:
+    product_id = product["product_id"]
+
+    # Assign each product to 1–3 distinct warehouses
+    num_warehouses = random.randint(1, 3)
+
+    assigned_warehouses = random.sample(
+        warehouses,
+        num_warehouses,
+    )
+
+    for warehouse in assigned_warehouses:
+        stock_quantity = random.randint(10, 500)
+        reorder_level = random.randint(10, 50)
+
+        days_since_restock = random.randint(0, 90)
+
+        last_restock_date = (
+            date.today()
+            - timedelta(days=days_since_restock)
+        )
+
+        inventory.append({
+            "inventory_id": inventory_id,
+            "product_id": product_id,
+            "warehouse": warehouse,
+            "stock_quantity": stock_quantity,
+            "reorder_level": reorder_level,
+            "last_restock_date": last_restock_date,
+        })
+
+        inventory_id += 1
+
+
+inventory_df = pd.DataFrame(inventory)
+
+inventory_df["last_restock_date"] = (
+    pd.to_datetime(inventory_df["last_restock_date"])
+    .dt.strftime("%Y-%m-%d")
+)
+# Validate inventory_id uniqueness
+assert inventory_df["inventory_id"].is_unique, \
+    "Duplicate inventory IDs found"
+
+# Validate (product_id, warehouse) uniqueness
+assert not inventory_df.duplicated(
+    subset=["product_id", "warehouse"]
+).any(), \
+    "Duplicate product/warehouse combinations found"
+
+# Validate valid product IDs
+valid_product_ids = {p["product_id"] for p in products}
+
+assert inventory_df["product_id"].isin(valid_product_ids).all(), \
+    "Invalid product IDs found"
+
+# Validate positive stock
+assert (inventory_df["stock_quantity"] > 0).all(), \
+    "Invalid stock quantities"
+
+# Validate positive reorder levels
+assert (inventory_df["reorder_level"] > 0).all(), \
+    "Invalid reorder levels"
+
+print("Inventory validation passed!")
+inventory_output_path = RAW_DATA_PATH / "inventory.csv"
+
+inventory_df.to_csv(
+    inventory_output_path,
+    index=False,
+)
+
+print()
+print(f"Generated {len(inventory_df)} inventory records")
+print("inventory.csv created successfully!")
+print(f"inventory.csv saved to: {inventory_output_path}")
